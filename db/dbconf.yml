@@ -1,0 +1,3 @@
+development:
+  driver: mysql
+  open: root:admin@tcp(127.0.0.1:3307)/time_shift

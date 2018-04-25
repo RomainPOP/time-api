@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/revel/revel"
+	"time-api/app/controllers"
 )
 
 var (
@@ -29,6 +30,8 @@ func init() {
 		revel.ActionInvoker,           // Invoke the action.
 	}
 
+	revel.OnAppStart(controllers.InitDB)
+
 	// Register startup functions with OnAppStart
 	// revel.DevMode and revel.RunMode only work inside of OnAppStart. See Example Startup Script
 	// ( order dependent )
@@ -48,6 +51,7 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 
 	fc[0](c, fc[1:]) // Execute the next filter stage.
 }
+
 
 //func ExampleStartupScript() {
 //	// revel.DevMod and revel.RunMode work here
